@@ -1,0 +1,31 @@
+{
+  "name": "ipolicymartbackend",
+  "version": "1.0.0",
+  "engines": {
+    "node": "v12.16.1",
+    "npm": "6.13.4"
+  },
+  "description": "ipolicymartbackend",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cloudinary": "^1.23.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "haversine": "^1.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.8",
+    "multer": "^1.4.2",
+    "socket.io": "^2.3.0",
+    "uuid": "^8.3.1"
+  }
+}
