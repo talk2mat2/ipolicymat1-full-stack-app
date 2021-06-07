@@ -13,11 +13,7 @@ exports.LoginbyJWT = async function (req, res, next) {
       req.body.id = decodedToken.user._id;
       const todaysdate = new Date();
 
-      // await UserSchema.findByIdAndUpdate(
-      //   { _id: req.body.id },
-      //   { lastSeen: todaysdate },
-      //   { useFindAndModify: false }
-      // ).catch((err) => console.log(err)),
+
       next();
     }
   });
