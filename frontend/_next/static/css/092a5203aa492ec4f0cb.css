@@ -21381,24 +21381,42 @@ table.center {
 .radioSelector:hover {
   background-color: rgb(242, 247, 253);
 }
-.OptionCard{
+.OptionCard {
   height: 40px;
-border:1px solid grey;
-margin-top:10px;
-margin-bottom:10px;
-cursor:pointer;
+  border: 1px solid grey;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
-.OptionCard:hover{
+.OptionCard:hover {
   background-color: gainsboro;
 }
-.OptionCard >input{
-margin-right:10px
+.OptionCard > input {
+  margin-right: 10px;
 }
-.OptionCard.active{
-  border:2px solid dodgerblue;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+.OptionCard.active {
+  border: 2px solid dodgerblue;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.Q-container{
+.Q-container {
   margin-bottom: 40px;
+}
+.signin-btn {
+color:#fff;
+background-color: #31abfc;
+padding:8px 16px;
+}
+
+.navbtn{
+  margin-left: 20px;
+}
+.disclaimer-Section{
+
+margin-top: 80px;
+}
+.disclaimer-Section>h6{
+text-align: center;
+margin-top: ;
 }
