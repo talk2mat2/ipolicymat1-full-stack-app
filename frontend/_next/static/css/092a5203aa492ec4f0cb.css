@@ -21418,5 +21418,19 @@ margin-top: 80px;
 }
 .disclaimer-Section>h6{
 text-align: center;
-margin-top: ;
+margin-top: 30px;
+}
+.CarInsuranceAddons>ul>li:nth-child(n+2){
+font-weight: 700;
+}
+.features-second>ul{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style-type: circle;
+}
+.features-second>ul>li{
+margin:0 10px 0 10px;
+padding-right:5px;
+
 }

@@ -6,7 +6,7 @@ const url = `mongodb+srv://${process.env.MONGOUSER}:${process.env.MONGOPASS}@clu
 const connectDB = async () => {
   await mongoose.connect(
     url,
-    { useUnifiedTopology: true, useNewUrlParser: true },
+    { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true },
     (err, success) => {
       if (err) return console.log(err);
       console.log("connected to mongodb server");
