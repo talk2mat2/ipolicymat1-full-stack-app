@@ -15998,7 +15998,7 @@ textarea.form-control {
 .main-banner-area {
   position: relative;
   background-color: #c6e3fd;
-  padding-top: 225px;
+  padding-top: 160px;
   padding-bottom: 125px;
   z-index: 1;
   overflow: hidden;
@@ -21202,6 +21202,28 @@ textarea.form-control {
   padding-top: 30px;
   cursor: pointer;
 }
+.headerMain {
+  text-align: center;
+}
+.HeaderCard {
+  background-color: #fff;
+  margin: 10px;
+  height: 400px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-top: 30px;
+  cursor: pointer;
+  border-radius: 3px;
+  display:flex;
+  flex-direction: column;
+  padding:10px;
+}
+.HeaderCard-start {
+  margin-top: auto;
+ padding-top: 25px;
+ padding-bottom: 25px;
+  background-color: dodgerblue;
+  width: 100%;
+}
 
 .cardbActive {
   border: 1px solid blue;
@@ -21214,6 +21236,12 @@ textarea.form-control {
   font-size: 17px;
   font-weight: bold;
   text-transform: uppercase;
+  /* padding-top: 20px; */
+}
+.card-label2{
+  font-size: 27px;
+  font-weight: bold;
+  text-transform: capitalize;
   /* padding-top: 20px; */
 }
 .button-div {
@@ -21404,33 +21432,105 @@ table.center {
   margin-bottom: 40px;
 }
 .signin-btn {
-color:#fff;
-background-color: #31abfc;
-padding:8px 16px;
+  color: #fff;
+  background-color: #31abfc;
+  padding: 8px 16px;
 }
 
-.navbtn{
+.navbtn {
   margin-left: 20px;
 }
-.disclaimer-Section{
-
-margin-top: 80px;
+.disclaimer-Section {
+  margin-top: 80px;
 }
-.disclaimer-Section>h6{
-text-align: center;
-margin-top: 30px;
+.disclaimer-Section > h6 {
+  text-align: center;
+  margin-top: 30px;
 }
-.CarInsuranceAddons>ul>li:nth-child(n+2){
-font-weight: 700;
+.CarInsuranceAddons > ul > li:nth-child(n + 2) {
+  font-weight: 700;
 }
-.features-second>ul{
-  display:flex;
+.features-second > ul {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   list-style-type: circle;
 }
-.features-second>ul>li{
-margin:0 10px 0 10px;
-padding-right:5px;
+.features-second > ul > li {
+  margin: 0 10px 0 10px;
+  padding-right: 5px;
+}
+.appDiv{
+  /* background-color: #f3f2fa; */
 
+  /* height: 1000px; */
+  /* padding-top: 30px;
+  padding-bottom: 30px; */
+
+}
+.card-parent{
+  width: 100%;
+  margin: auto;
+  margin-top: 30px;
+}
+.phone-div{
+  /* position: absolute;
+  top: -170px; */
+  right: -10px
+}
+.phone-div > img{
+  width: 250px;
+}
+.phoneimg{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.small-cards{
+  width: 80px;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 7px 3px 2px 7px;
+text-align: center;
+  box-shadow: 0px 0px 10px 3px #d4d4d4;
+  height: 90px;
+}
+.small-cards > img{
+  width: 35px;
+}
+.small-cards > p{
+  font-size: 10px;
+}
+.card-1{
+  position: absolute;
+  right: 20px;
+  z-index: 3;
+}
+.card-2{
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  padding-top: 15px;
+  z-index: 2;
+}
+.card-3{
+  position: absolute;
+  top: 120px;
+  right: 20px;
+  padding-top: 15px;
+  z-index: 1;
+}
+.thickBlueLine{
+  height: 5px;
+  background-color: #385bfa;
+  width: 50px;
+}
+.appArea{
+/*    
+  background-color: #f2f7fd; */
+  background-color: #f9fbfe;
+  margin-bottom: 100px;
+
+  margin: 100px 0 100px;
+}
+.PlayStoreBtn{
+  margin-right: 20px;
 }
