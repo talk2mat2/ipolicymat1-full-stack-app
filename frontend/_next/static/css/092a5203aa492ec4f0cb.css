@@ -16242,13 +16242,15 @@ textarea.form-control {
 .services-area {
   position: relative;
   overflow: hidden;
-  background-color: #151449;
+  /* background-color: #151449; */
+    /* background-color: #c6e3fd; */
+    background-color: #fff;
   z-index: 1;
 }
 .services-area .section-title h2,
 .services-area .section-title p,
 .services-area .section-title span {
-  color: #fff;
+  /* color: #fff; */
 }
 .services-area .services-shape {
   position: absolute;
@@ -16258,40 +16260,33 @@ textarea.form-control {
 }
 .single-services {
   position: relative;
-  padding: 30px 30px 30px 80px;
-  border: 1px dotted #31abfc;
+  padding: 30px 30px 30px 50px;
+ 
   margin-bottom: 30px;
   transition: all 0.5s;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .single-services h3 {
   margin-bottom: 15px;
-  color: #fff;
+
 }
 .single-services i {
   font-size: 40px;
-  color: #31abfc;
+  
   position: absolute;
   left: 30px;
   top: 30px;
   line-height: 1;
   transition: all 0.5s;
 }
-.single-services p {
-  color: #fff;
-}
+
 .single-services a {
   margin-top: 20px;
   color: #fff;
   font-size: 15px;
 }
-.single-services:hover {
-  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
-  background-color: #31abfc;
-}
-.single-services:hover a,
-.single-services:hover i {
-  color: #fff;
-}
+
 .get-quat-area .quat-form {
   padding: 50px;
   box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
@@ -21533,4 +21528,8 @@ text-align: center;
 }
 .PlayStoreBtn{
   margin-right: 20px;
+}
+
+.quotesIcon{
+  color:dodgerblue;
 }
