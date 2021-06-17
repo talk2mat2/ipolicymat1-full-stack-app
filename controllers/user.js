@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const UserSchema = require("../models/userMoodel");
+const insuranceentity = require("../models/insuranceEntity");
 const cars = require("../models/cars");
 
 function validateEmail(email) {
@@ -159,6 +160,28 @@ exports.FindCarModelsBySearch = async (req, res) => {
   let total = await cars.countDocuments(Params);
   await cars
     .find(Params)
+    .limit(limit)
+    .then((result) => {
+      return res.status(200).json({
+        status: "success",
+        userData: result,
+        total: total,
+        limit: limit,
+      });
+    })
+    .catch((err) => {
+      return res
+        .status(501)
+        .json({ status: "fail", message: "an error occured" });
+    });
+};
+
+exports.fetchinsuranceEntity = async (req, res) => {
+  let total = await insuranceentity.estimatedDocumentCount({});
+
+  const limit = 15;
+  await insuranceentity
+    .find({})
     .limit(limit)
     .then((result) => {
       return res.status(200).json({

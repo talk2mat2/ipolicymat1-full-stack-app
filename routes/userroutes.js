@@ -20,6 +20,7 @@ const {
   Register,
   ListAllCars,
   FindCarModels,
+  fetchinsuranceEntity,
   FindCarModelsBySearch,
 } = require("../controllers/user");
 
@@ -63,6 +64,7 @@ Router.post("/login", Login);
 Router.post("/Register", Register);
 Router.get("/listAllCars", ListAllCars);
 Router.get("/FindCarModels", FindCarModels);
+Router.get("/fetchinsuranceEntity", fetchinsuranceEntity);
 Router.get("/FindCarModelsBySearch", FindCarModelsBySearch);
 
 module.exports = Router;
