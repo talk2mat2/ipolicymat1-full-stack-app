@@ -21194,6 +21194,7 @@ textarea.form-control {
   background-color: #f3f2fa;
   margin: 10px;
   height: 220px;
+  width: 150px;
   padding-top: 30px;
   cursor: pointer;
 }
@@ -21400,6 +21401,7 @@ table.center {
   align-items: center;
   padding: 20px;
   margin: 10px;
+  cursor: pointer;
 }
 .radioSelector:hover {
   background-color: rgb(242, 247, 253);
@@ -21410,6 +21412,17 @@ table.center {
   margin-top: 10px;
   margin-bottom: 10px;
   cursor: pointer;
+}
+.OptionCard.no-border{
+  border: none;
+  height: 40px;
+}
+.OptionCard.no-border>input{
+
+  height: 40px;
+}
+.OptionCard.no-border:hover{
+background-color: inherit;
 }
 .OptionCard:hover {
   background-color: gainsboro;
@@ -21532,4 +21545,38 @@ text-align: center;
 
 .quotesIcon{
   color:dodgerblue;
+}
+.top-menuDrawer{
+  margin-top: 30px;
+
+}
+.iCon{
+  font-size: 6px;
+  margin-right:3px;
+}
+.top-menu-drawer{
+  display: flex;
+  flex-direction: column;
+
+}
+.top-menu-drawer>span{
+  font-size: 16px;
+}
+.payNow-btn{
+  font-size: 16px;
+  color: #fff;
+  padding: 15px 30px;
+  line-height: 1;
+  transition: all 0.5s;
+  text-transform: capitalize;
+  position: relative;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+
+}
+.card-choose{
+  cursor: pointer;
 }
