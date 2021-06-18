@@ -21204,7 +21204,12 @@ textarea.form-control {
   text-align: center;
 }
 .headerMain .headerTitle {
-font-size: 35px;
+ 
+  line-height: 100%;
+  font-size: 35px;
+  color: #233d63;
+  margin-bottom: 10px;
+  text-transform: capitalize;
 }
 .HeaderCard {
   background-color: #fff;
