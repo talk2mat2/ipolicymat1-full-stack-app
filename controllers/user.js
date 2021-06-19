@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const UserSchema = require("../models/userMoodel");
 const insuranceentity = require("../models/insuranceEntity");
 const cars = require("../models/cars");
+const axios = require("axios");
+process.env.NODE_ENV !== "production" ? require("dotenv").config() : null;
 
 function validateEmail(email) {
   const re =
@@ -195,5 +197,48 @@ exports.fetchinsuranceEntity = async (req, res) => {
       return res
         .status(501)
         .json({ status: "fail", message: "an error occured" });
+    });
+};
+
+exports.PurchaseInsurance = async (req, res) => {
+  console.log(req.body);
+  const { paymentDetails } = req.body;
+  //verify payment from paystack before we give the purchase value to the client
+
+  await axios
+    .get(
+      `https://api.paystack.co/transaction/verify/${paymentDetails.reference}`,
+      {
+        headers: {
+          Authorization: `Bearer sk_test_82fde3c8244fda92873ad6c1b12287389badd38f`,
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response.data);
+      if (response.data.data.status === "success") {
+        //means the guy paid truly// then we process the guys purchase item
+        return res
+          .status(200)
+          .json({
+            status: "success",
+            message: "Your Purchase was successfull",
+          });
+      } else {
+        return res.status(501).json({
+          status: "fail",
+          message: "Unable to verify payment status",
+        });
+      }
+    })
+    .catch((err) => {
+      if (err.message) {
+        console.log(err.message);
+      }
+      console.log(err);
+      return res.status(501).json({
+        status: "fail",
+        message: "An error occured",
+      });
     });
 };
