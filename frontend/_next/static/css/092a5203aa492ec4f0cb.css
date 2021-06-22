@@ -16451,6 +16451,11 @@ textarea.form-control {
   position: relative;
   z-index: 1;
 }
+.agent-now-area2 {
+  background-color: #f5f6f8;
+  position: relative;
+  z-index: 1;
+}
 .agent-now-area .call-now {
   background-color: #262566;
   position: relative;
@@ -21200,11 +21205,35 @@ textarea.form-control {
   padding-top: 30px;
   cursor: pointer;
 }
+.insuranceCard {
+  /* background-color: #f3f2fa; */
+  background-color: #fff;
+  margin: 10px;
+  height: 120px;
+  width: 200px;
+  padding-top: 30px;
+  cursor: pointer;
+  object-fit: contain;
+  text-align: center;
+  position: relative;
+}
+@media (max-width: 900px) {
+  .ourPartners {
+    justify-content: center;
+  }
+}
+.insuranceCard img {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+.insuranceCard img:hover{
+  -webkit-filter: grayscale(10%); /* Safari 6.0 - 9.0 */
+  filter: none;
+}
 .headerMain {
   text-align: center;
 }
 .headerMain .headerTitle {
- 
   line-height: 100%;
   font-size: 35px;
   color: #233d63;

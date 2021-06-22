@@ -16,7 +16,7 @@ App.use(cors());
 App.use(express.json({ extended: false }));
 App.use(express.static(path.join(__dirname, "./frontend")));
 App.set("views", path.join(__dirname, "views"));
-App.set("view engine", "ejs");
+// App.set("view engine", "ejs");
 App.use("/api/v1", UserRoutes);
 App.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./frontend", "index.html"));
