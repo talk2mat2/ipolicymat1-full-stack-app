@@ -23,6 +23,8 @@ const {
   fetchinsuranceEntity,
   FindCarModelsBySearch,
   PurchaseInsurance,
+  ListAllBikes,
+  FindBikeModels,
 } = require("../controllers/user");
 
 var storage = multer.diskStorage({
@@ -64,7 +66,9 @@ Router.post("/login", Login);
 
 Router.post("/Register", Register);
 Router.get("/listAllCars", ListAllCars);
+Router.get("/ListAllBikes", ListAllBikes);
 Router.get("/FindCarModels", FindCarModels);
+Router.get("/FindBikeModels", FindBikeModels);
 Router.get("/fetchinsuranceEntity", fetchinsuranceEntity);
 Router.get("/FindCarModelsBySearch", FindCarModelsBySearch);
 Router.post("/PurchaseInsurance", PurchaseInsurance);

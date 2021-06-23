@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const UserSchema = require("../models/userMoodel");
 const insuranceentity = require("../models/insuranceEntity");
 const cars = require("../models/cars");
+const { bikebrands, bikemodels } = require("../models/bike");
 const axios = require("axios");
 process.env.NODE_ENV !== "production" ? require("dotenv").config() : null;
 
@@ -116,6 +117,26 @@ exports.ListAllCars = async (req, res) => {
         .json({ status: "fail", message: "an error occured" });
     });
 };
+exports.ListAllBikes = async (req, res) => {
+  let total = await bikebrands.countDocuments({});
+  const limit = 15;
+  await bikebrands
+    .find({})
+    .limit(limit)
+    .then((result) => {
+      return res.status(200).json({
+        status: "success",
+        userData: result,
+        total: total,
+        limit: limit,
+      });
+    })
+    .catch((err) => {
+      return res
+        .status(501)
+        .json({ status: "fail", message: "an error occured" });
+    });
+};
 
 exports.FindCarModels = async (req, res) => {
   const { CarBrands } = req.query;
@@ -136,6 +157,35 @@ exports.FindCarModels = async (req, res) => {
   let total = await cars.countDocuments(Params);
   await cars
     .findOne(Params)
+    .then((result) => {
+      return res.status(200).json({
+        status: "success",
+        userData: result,
+        total: total,
+      });
+    })
+    .catch((err) => {
+      return res
+        .status(501)
+        .json({ status: "fail", message: "an error occured" });
+    });
+};
+exports.FindBikeModels = async (req, res) => {
+  const { BikeBrands_id } = req.query;
+  console.log(BikeBrands_id);
+  if (!BikeBrands_id) {
+    console.log("no bike id supplied");
+    return res
+      .status(501)
+      .json({ status: "fail", message: "no bike brand id supplied" });
+  }
+  const BikeBrands_id_integer = parseFloat(BikeBrands_id);
+
+  // const Params = { name: UppercaseName };
+  const Params = { brand_id: BikeBrands_id_integer };
+  let total = await bikemodels.countDocuments(Params);
+  await bikemodels
+    .find(Params)
     .then((result) => {
       return res.status(200).json({
         status: "success",
@@ -218,12 +268,10 @@ exports.PurchaseInsurance = async (req, res) => {
       console.log(response.data);
       if (response.data.data.status === "success") {
         //means the guy paid truly// then we process the guys purchase item
-        return res
-          .status(200)
-          .json({
-            status: "success",
-            message: "Your Purchase was successfull",
-          });
+        return res.status(200).json({
+          status: "success",
+          message: "Your Purchase was successfull",
+        });
       } else {
         return res.status(501).json({
           status: "fail",
