@@ -172,7 +172,7 @@ exports.FindCarModels = async (req, res) => {
 };
 exports.FindBikeModels = async (req, res) => {
   const { BikeBrands_id } = req.query;
-  console.log(BikeBrands_id);
+  // console.log(BikeBrands_id);
   if (!BikeBrands_id) {
     console.log("no bike id supplied");
     return res
@@ -200,6 +200,34 @@ exports.FindBikeModels = async (req, res) => {
     });
 };
 
+exports.FindBikeModelsBySearch = async (req, res) => {
+  const { search } = req.query;
+
+  const limit = 6;
+  if (!search) {
+    return res
+      .status(501)
+      .json({ status: "fail", message: "no search Query provided" });
+  }
+  const Params = { name: { $regex: search, $options: "i" } };
+  let total = await bikebrands.countDocuments(Params);
+  await bikebrands
+    .find(Params)
+    .limit(limit)
+    .then((result) => {
+      return res.status(200).json({
+        status: "success",
+        userData: result,
+        total: total,
+        limit: limit,
+      });
+    })
+    .catch((err) => {
+      return res
+        .status(501)
+        .json({ status: "fail", message: "an error occured" });
+    });
+};
 exports.FindCarModelsBySearch = async (req, res) => {
   const { search } = req.query;
   const limit = 6;
@@ -265,7 +293,7 @@ exports.PurchaseInsurance = async (req, res) => {
       }
     )
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       if (response.data.data.status === "success") {
         //means the guy paid truly// then we process the guys purchase item
         return res.status(200).json({
