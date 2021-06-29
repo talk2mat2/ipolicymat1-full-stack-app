@@ -21618,3 +21618,32 @@ table.center {
 .card-choose {
   cursor: pointer;
 }
+
+.gadgetsApp>div{
+margin:10px;
+
+}
+.gadgetsApp>div>select,.gadgetsApp>div> input{
+  background-color: transparent;
+  height: 50px;
+  padding: 6px 15px;
+  border: 1px solid #eee;
+  width: 150px;
+  display: block;
+  outline: 0;
+  transition: 0.5s;
+}
+.gadgetsApp>div>select:focus,.gadgetsApp>div> input:focus{
+  outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+@media(max-width:700px){
+  .gadgetsApp>div>select,.gadgetsApp>div> input{
+    width: 100%;
+  }
+}
+.gadgets-content{
+  /* display: flex;
+  flex-direction: column; */
+}
