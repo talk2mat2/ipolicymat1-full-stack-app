@@ -151,6 +151,12 @@ li {
   border: none;
   margin-bottom: 20px;
   cursor: pointer;
+
+  display: flex;
+}
+.choose-us-options p {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .choose-us-options button {
@@ -251,6 +257,7 @@ li {
 .choose-cards p {
   font-size: 13px;
   white-space: nowrap;
+  color: rgb(151, 151, 151);
 }
 
 .how-it-works {
@@ -383,4 +390,26 @@ li {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+}
+.coins2 {
+  border-radius: 4px;
+  margin: auto;
+  text-align: center;
+  align-self: center;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.loves-us-card img {
+  border-radius: 100%;
+  object-fit: cover;
+}
+.loves-us-card p {
+  margin-top: 25px;
+}
+.light-text {
+  color: rgb(189, 187, 187);
 }
