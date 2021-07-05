@@ -96,6 +96,12 @@ li {
   font-size: 46px;
 }
 @media (max-width: 640px) {
+  .mobile-hide-left {
+    display: none;
+  }
+  .left-side-img {
+    width: 15px;
+  }
   .Main-content-add {
     line-height: 1.2;
     letter-spacing: 1.2px;
@@ -140,7 +146,7 @@ li {
   font-weight: 500;
   font-size: 23px;
   line-height: 1.9;
-  letter-spacing: 1.8px;
+  letter-spacing: 1.3px;
   color: rgb(189, 187, 187);
 }
 .choose-us-options {
@@ -155,8 +161,11 @@ li {
   display: flex;
 }
 .choose-us-options p {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.choose-us-options h5 {
+  text-align: start;
 }
 
 .choose-us-options button {
@@ -412,4 +421,56 @@ li {
 }
 .light-text {
   color: rgb(189, 187, 187);
+}
+
+/* car started from here */
+
+.Car-section {
+  min-height: 550px;
+  width: 100%;
+}
+.left-content {
+  /* flex-basis: 7%; */
+  flex: 1;
+
+  border-right: 1px solid #eee;
+}
+.right-content {
+  flex: 5;
+  border-left: 1px solid #eee;
+  padding-top: 60px;
+}
+.left-content ul {
+  list-style: none;
+  margin-top: 30px;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 10px;
+}
+.left-content > ul > li {
+  list-style: none;
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.left-content > ul > li:nth-child(n + 2) {
+  font-weight: 200;
+}
+
+.left-side-img {
+  width: 30px;
+  margin: 6px;
+}
+.input-cars {
+  height: 40px;
+  border: 1px solid #eee;
+  width: 100%;
+  padding: 10px;
+}
+.midtext1 {
+  font-weight: 200px;
 }
