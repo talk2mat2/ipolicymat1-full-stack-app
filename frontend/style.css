@@ -17,9 +17,16 @@ p,
 li {
   font-weight: 500;
 }
+a,
+a:active,
+a:visited,
+a:link {
+  text-decoration: none;
+  text-transform: none;
+}
 * {
   box-sizing: border-box;
-  transition: all 0.7s ease;
+  transition: all 0.5s ease;
 }
 .navTitle {
   font-size: 25px;
@@ -33,6 +40,21 @@ li {
   padding: 10px 15px;
   border: none;
   border-radius: 3px;
+}
+.btn2 {
+  background-color: #fff;
+  /* color: #fff; */
+  padding: 4px 17px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+.btn3 {
+  background-color: #fff;
+  /* color: #fff; */
+  padding: 4px 17px;
+  border: none;
+  border-radius: 3px;
+  font-weight: 200;
 }
 .nav-bar {
   display: flex;
@@ -73,6 +95,12 @@ li {
   margin-right: 60px;
 }
 @media (max-width: 930px) {
+  .car-card .card {
+    width: 40%;
+  }
+  .car-card img {
+    width: 80%;
+  }
   .nav-options {
     display: none;
   }
@@ -460,6 +488,9 @@ li {
 .left-content > ul > li:nth-child(n + 2) {
   font-weight: 200;
 }
+.left-content > ul > li:nth-child(n + 2).focused {
+  background-color: #1e8fff28;
+}
 
 .left-side-img {
   width: 30px;
@@ -467,10 +498,49 @@ li {
 }
 .input-cars {
   height: 40px;
+  border-radius: 4px;
   border: 1px solid #eee;
   width: 100%;
   padding: 10px;
 }
 .midtext1 {
-  font-weight: 200px;
+  font-weight: 200;
+}
+.partners {
+  margin-top: 80px;
+}
+.partnersRow img {
+  max-width: 20vw;
+}
+
+.carsList .card {
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  border-color: #a7a7a7;
+}
+.carsList .card-body {
+  padding: 2px 1px;
+}
+.car-card {
+  margin: 10px 0px;
+}
+
+.carNextbtn {
+  text-align: center;
+  margin-left: 45%;
+  padding: 10px 40px;
+}
+
+.carsList .card.focused {
+  border: 2px solid dodgerblue;
+}
+.carsModel .cardB {
+  border: 1px solid #eee;
+  margin: 10px;
+}
+.carsModel .cardB.focused {
+  border: 2px solid dodgerblue;
+}
+.carsModel {
 }
