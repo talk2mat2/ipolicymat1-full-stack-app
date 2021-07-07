@@ -3,7 +3,8 @@
 button:focus {
   outline: none;
 }
-input:focus {
+input:focus,
+select:focus {
   outline: none;
   border-color: #9ecaed;
   box-shadow: 0 0 10px #9ecaed;
@@ -124,6 +125,9 @@ a:link {
   font-size: 46px;
 }
 @media (max-width: 640px) {
+  select.input-cars {
+    font-size: 12px;
+  }
   .mobile-hide-left {
     display: none;
   }
@@ -490,6 +494,7 @@ a:link {
 }
 .left-content > ul > li:nth-child(n + 2).focused {
   background-color: #1e8fff28;
+  font-weight: 500;
 }
 
 .left-side-img {
@@ -535,12 +540,23 @@ a:link {
 .carsList .card.focused {
   border: 2px solid dodgerblue;
 }
+/* .carsList .card.focused button {
+  background-color: dodgerblue;
+} */
+.carsModel button {
+  font-size: 14px;
+}
 .carsModel .cardB {
   border: 1px solid #eee;
   margin: 10px;
 }
 .carsModel .cardB.focused {
   border: 2px solid dodgerblue;
+  background-color: dodgerblue;
+}
+.carsModel .cardB.focused button {
+  background-color: dodgerblue;
+  color: #fff;
 }
 .carsModel {
 }
