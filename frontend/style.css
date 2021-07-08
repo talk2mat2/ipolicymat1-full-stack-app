@@ -49,6 +49,15 @@ a:link {
   border: 1px solid #eee;
   border-radius: 3px;
 }
+.btn4 {
+  background-color: #007bff;
+  color: #fff;
+  padding: 4px 50px;
+  /* width: 200px; */
+  border: 1px solid #eee;
+  border-radius: 3px;
+  font-size: 13px;
+}
 .btn3 {
   background-color: #fff;
   /* color: #fff; */
@@ -56,6 +65,16 @@ a:link {
   border: none;
   border-radius: 3px;
   font-weight: 200;
+}
+.btn5 {
+  background-color: #fff;
+  /* color: #fff; */
+  padding: 4px 30px;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  font-weight: 200;
+  font-size: 14px;
 }
 .nav-bar {
   display: flex;
@@ -125,6 +144,9 @@ a:link {
   font-size: 46px;
 }
 @media (max-width: 640px) {
+  .quotesCard .card {
+    padding-bottom: 15px;
+  }
   select.input-cars,
   .input-cars[type="text"] {
     font-size: 13px;
@@ -385,13 +407,30 @@ a:link {
   margin-top: 40px;
   margin-bottom: 40px;
 }
+.promo-now {
+  height: 30px;
+  margin-top: 1px;
+  margin-bottom: 30px;
+}
 .subscribe-now input {
   width: 60%;
   height: 100%;
   border: none;
   padding: 10px;
 }
+.promo-now input {
+  width: 60%;
+  color: #fff;
+  height: 100%;
+  border: none;
+  padding: 10px;
+  background-color: #007bff;
+  border: 1px solid rgb(204, 191, 191);
+}
 .subscribe-now input:focus {
+  outline: none;
+}
+.promo-now input:focus {
   outline: none;
 }
 .subscribe-now button {
@@ -402,6 +441,13 @@ a:link {
   border: none;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
+}
+.promo-now button {
+  height: 100%;
+  width: 40%;
+  background-color: orange;
+  color: #fff;
+  border: none;
 }
 .footer-container {
   display: flex;
@@ -475,6 +521,14 @@ a:link {
   flex: 5;
   border-left: 1px solid #eee;
   padding-top: 60px;
+}
+
+.left-content.quotesList ul {
+  margin-top: 10px;
+}
+.left-content.quotesList > ul > li {
+  margin-top: 10px;
+  margin-bottom: 14px;
 }
 .left-content ul {
   list-style: none;
@@ -567,25 +621,33 @@ a:link {
 
 .Qoutes-header-Count {
   background-color: dodgerblue;
-  height: 40px;
+  height: 50px;
   padding: 10px;
 }
 .Qoutes-header-Count p {
   color: #fff;
   text-align: center;
 }
+.Qoutes-header-Count p.bunow {
+  color: #fff;
+  text-align: left;
+}
 .Qoutes-header-Count-first {
   background-color: #fff;
   min-height: 40px;
   margin-bottom: 10px;
-  padding-top: 5px;
+  padding-top: 9px;
   padding-bottom: 5px;
+  border-top: 1px solid #eee;
 }
 .Qoutes-header-Count-first h4 {
   margin-left: 30%;
 }
 .QuotesSection {
   background-color: #fbfbfd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .LoadingQuotes {
   display: flex;
@@ -595,4 +657,111 @@ a:link {
   width: 100%;
   height: 550px;
   background-color: #fff;
+}
+.quotesCard {
+  background-color: #fff;
+  min-height: 120px;
+  margin-bottom: 40px;
+}
+.quotesCard .card {
+  position: relative;
+}
+.quotesCard ul.quotesListings {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+.quotesCard ul.quotesListings > li {
+  margin: 10px;
+}
+.quotesCard ul.quotesListings > li:nth-child(n + 2) {
+  font-weight: 100;
+}
+.quotesCard ul.quotesListings > li:nth-child(n + 2) span {
+  font-weight: bold;
+  white-space: nowrap;
+}
+.morebtn {
+  margin-left: 30%;
+
+  width: 200px;
+  position: absolute;
+  top: 90%;
+  z-index: 5;
+}
+.expandMore {
+  height: 1px;
+  overflow: hidden;
+
+  border-top: 1px solid #eee;
+}
+.expandMore.active {
+  height: 300px;
+  overflow: hidden;
+}
+.expandMoreListing {
+  list-style: none;
+  flex: 1;
+  padding-top: 10px;
+  cursor: pointer;
+}
+.expandMoreListing > li {
+  border: 1px solid #eee;
+  padding: 5px 10px;
+  font-weight: 300;
+  white-space: nowrap;
+}
+.expandMoreContent {
+  flex: 5;
+}
+.checkout-user-details {
+  background-color: #fff;
+  min-height: 450px;
+}
+.checkout-price-details {
+  background-color: #007bff;
+  min-height: 400px;
+  color: #fff;
+}
+.checkout-price-details h6 {
+  font-size: 15px;
+}
+.checkout-price-details p {
+  font-size: 13px;
+}
+.checkout-price-details .smalltext {
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 200;
+  margin-top: 10px;
+}
+.checkout-listing {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 40px;
+}
+.checkout-listing li {
+  list-style: none;
+  margin-bottom: 5px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.checkout-user-details-header {
+  line-height: 0.9;
+}
+.checkout-user-info {
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+.checkout-user-info h5 {
+  font-weight: 300;
 }
