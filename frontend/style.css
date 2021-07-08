@@ -765,3 +765,22 @@ a:link {
 .checkout-user-info h5 {
   font-weight: 300;
 }
+.checkout-user-info-items {
+  border-bottom: 1px solid #eee;
+}
+.checkout-user-info-items .card {
+  border-radius: 0;
+  cursor: pointer;
+  border: none;
+}
+.checkout-user-info-items .card:hover {
+  background-color: #eee;
+}
+.checkout-user-info-items .card.active {
+  border-bottom: 1px solid #007bff;
+  color: #007bff;
+}
+
+.checkout-user-info-items h6 {
+  font-weight: 300;
+}
