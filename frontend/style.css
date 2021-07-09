@@ -658,6 +658,12 @@ a:link {
   height: 550px;
   background-color: #fff;
 }
+.successPurchase {
+  background-color: #fff;
+}
+.successPurchase .container {
+  padding-top: 90px;
+}
 .quotesCard {
   background-color: #fff;
   min-height: 120px;
@@ -783,4 +789,17 @@ a:link {
 
 .checkout-user-info-items h6 {
   font-weight: 300;
+}
+.checkout-listing-details {
+  list-style: none;
+  margin-top: 50px;
+}
+.checkout-listing-details > li > span:nth-child(n + 2) {
+  font-weight: 200;
+}
+.checkout-listing-details > li {
+  line-height: 1.9;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
