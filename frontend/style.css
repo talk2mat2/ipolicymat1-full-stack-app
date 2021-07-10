@@ -803,3 +803,13 @@ a:link {
   flex-direction: row;
   justify-content: space-between;
 }
+.loaderOverLay{
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background-color: rgb(255, 255, 255, 0.8);
+}
