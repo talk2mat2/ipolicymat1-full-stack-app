@@ -616,6 +616,10 @@ a:link {
 .carsModel button {
   font-size: 14px;
 }
+/* .cardB {
+  min-height: 30px;
+  line-height: 30px;
+} */
 .carsModel .cardB {
   border: 1px solid #eee;
   margin: 10px;
