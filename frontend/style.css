@@ -156,6 +156,9 @@ a:link {
   font-size: 46px;
 }
 @media (max-width: 640px) {
+  .login-right-section {
+    display: none;
+  }
   .quotesCard .card {
     padding-bottom: 15px;
   }
@@ -526,7 +529,7 @@ a:link {
 .left-content {
   /* flex-basis: 7%; */
   flex: 1;
-
+  padding: 0 !important;
   border-right: 1px solid #eee;
 }
 .right-content {
@@ -548,6 +551,7 @@ a:link {
   margin-left: 0;
   margin-right: 0;
   padding: 10px;
+  padding-right: 0px;
 }
 .left-content > ul > li {
   list-style: none;
@@ -565,6 +569,7 @@ a:link {
 .left-content > ul > li:nth-child(n + 2).focused {
   background-color: #1e8fff28;
   font-weight: 500;
+  color: dodgerblue;
 }
 
 .left-side-img {
@@ -828,4 +833,41 @@ a:link {
   justify-content: center;
   z-index: 3;
   background-color: rgb(255, 255, 255, 0.8);
+}
+.login-page {
+  background-color: #fbfbfd;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+.login-page .container {
+  padding-top: 40px;
+}
+.login-left-section {
+  background-color: #fff;
+  flex: 2;
+  height: 550px;
+}
+.login-right-section {
+  background-color: #007bff;
+  background-image: url("/images/back4.png");
+  width: 100%;
+
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex: 2;
+  height: 550px;
+}
+.login-right-section h3,
+.login-right-section h1,
+.login-small-text {
+  color: #fff;
+}
+.loginradios span {
+  margin-left: 10px;
+}
+.login-form p {
+  font-weight: 300;
 }
