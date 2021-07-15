@@ -58,6 +58,14 @@ a:link {
   border-radius: 3px;
   font-size: 13px;
 }
+.btn6 {
+  font-weight: 400;
+  padding: 2px 9px;
+  /* width: 200px; */
+  border: 1px solid #eee;
+  border-radius: 3px;
+  font-size: 14px;
+}
 .btn3 {
   background-color: #fff;
   /* color: #fff; */
@@ -80,10 +88,13 @@ a:link {
   display: flex;
   flex-direction: row;
   width: 100%;
+  min-height: 60px;
   padding: 10px 10% !important;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
-
+.erroAlert:first-letter {
+  text-transform: capitalize;
+}
 .read-more {
   margin-top: 30px;
 }
@@ -141,7 +152,12 @@ a:link {
     margin-right: 0;
   }
 }
-
+.nav-options > ul > a,
+.Nav-Colapse-listings > a {
+  text-transform: none;
+  text-decoration: none;
+  color: #000;
+}
 .verticalCenterRow {
   display: flex;
   flex-wrap: wrap;
@@ -526,15 +542,52 @@ a:link {
   min-height: 550px;
   width: 100%;
 }
+.dashboard-section {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fbfbfd;
+}
+.dashboard-section main {
+  padding: 10px;
+}
+.dashboard-row {
+  width: 100%;
+}
 .left-content {
   /* flex-basis: 7%; */
   flex: 1;
   padding: 0 !important;
   border-right: 1px solid #eee;
 }
+.left-dashboard-content {
+  /* flex-basis: 7%; */
+  flex: 1;
+  padding: 0 !important;
+  background-color: #fff;
+  height: 450px;
+  margin: 20px;
+  border-radius: 10px;
+}
+.left-dashboard-content ul {
+  margin-top: 40px;
+  list-style: none;
+}
+.left-dashboard-content ul > li {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+.left-dashboard-content ul > li > P {
+  margin-left: 10px;
+}
 .right-content {
   flex: 5;
   border-left: 1px solid #eee;
+  padding-top: 60px;
+}
+.right-dashboard-content {
+  flex: 5;
+
   padding-top: 60px;
 }
 
@@ -858,7 +911,7 @@ a:link {
   background-size: cover;
   background-repeat: no-repeat;
   flex: 2;
-  height: 550px;
+  min-height: 550px;
 }
 .login-right-section h3,
 .login-right-section h1,
@@ -870,4 +923,18 @@ a:link {
 }
 .login-form p {
   font-weight: 300;
+}
+.loginradios {
+  cursor: pointer;
+}
+
+.loginradios.focused span {
+  color: dodgerblue;
+}
+.cardc {
+  margin-top: 10px;
+  height: 120px !important;
+}
+.html {
+  scroll-behavior: smooth;
 }

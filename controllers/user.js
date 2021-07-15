@@ -22,7 +22,7 @@ exports.Login = async function (req, res) {
   }
 
   if (!validateEmail(Email)) {
-    return res.status(404).json({ message: "pls use a valid email address" });
+    return res.status(404).json({ message: "Pls use a valid email address" });
   }
 
   UserSchema.findOne({ Email }, async function (err, user) {
@@ -30,21 +30,24 @@ exports.Login = async function (req, res) {
     if (!user) {
       res.status(404).json({
         message:
-          "user with this email is not registered with us, concider registering",
+          " A user with this email is not registered with us, concider registering",
       });
     } else if (user) {
       const match = await user.verifyPassword(Password);
       if (!match) {
         return res
           .status(401)
-          .json({ message: "oopss! , the entered password is not correct." });
+          .json({ message: "The entered password is not correct." });
       } else {
         user.Password = "";
         return res.json({
-          userdata: user,
-          token: jwt.sign({ user: user }, process.env.JWTKEY, {
-            expiresIn: "17520hr",
-          }),
+          status: "success",
+          userData: {
+            token: jwt.sign({ user: user }, process.env.JWTKEY, {
+              expiresIn: "17520hr",
+            }),
+            user,
+          },
         });
       }
     }
@@ -52,24 +55,28 @@ exports.Login = async function (req, res) {
 };
 
 exports.Register = async (req, res) => {
-  const { firstName, lastName, Email, Password, Password2, Gender } = req.body;
-
+  const { firstName, lastName, email, password, password2, Gender } = req.body;
+  console.log(req.body);
+  const Email = email;
+  const Password = password;
+  const Password2 = password2;
   if (!validateEmail(Email)) {
     return res
-      .status(404)
+      .status(501)
       .json({ message: "pls use a valid email address to register" });
   }
   if (Password2 != Password) {
-    return res.status(404).json({ message: "both password dont match" });
+    return res.status(501).json({ message: "both password dont match" });
   }
-  if (!Password2 || !Password || !lastName || !firstName || !Email || !Gender) {
-    return res.status(404).json({
+  console.log(firstName, lastName, email, Password, Password2, Gender);
+  if (!Password2 || !Password || !lastName || !firstName || !Email) {
+    return res.status(501).json({
       message: "oops! you didnt fill all values required,kindly try again",
     });
   }
   await UserSchema.findOne({ Email: Email }).then((user) => {
     if (user) {
-      return res.status(401).send({
+      return res.status(501).send({
         message: `a user with email ${Email}is already registred, try to login`,
       });
     }
@@ -84,10 +91,11 @@ exports.Register = async (req, res) => {
       Email,
       Password: Passwordhash,
       RegisterdDate,
-      Gender,
     });
     await newUser.save();
-    return res.status(200).send({ message: "account registered successfully" });
+
+    this.Login({ body: { Email, Password } }, res);
+    // return res.status(200).send({ message: "account registered successfully" });
   } catch (err) {
     console.log(err);
     return res.status(501).send({

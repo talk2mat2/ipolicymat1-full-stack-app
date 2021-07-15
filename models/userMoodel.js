@@ -9,6 +9,7 @@ const UserSchema = new Schema({
 
   Email: { type: String, required: true, unique: true },
   Password: { type: String, required: true },
+  mobilePhonbe: String,
 });
 
 UserSchema.methods.verifyPassword = async function (Password) {
