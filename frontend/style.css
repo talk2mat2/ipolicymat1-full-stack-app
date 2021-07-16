@@ -571,13 +571,28 @@ a:link {
 .left-dashboard-content ul {
   margin-top: 40px;
   list-style: none;
+  width: 100%;
+
+  padding-left: 0;
 }
-.left-dashboard-content ul > li {
+
+.left-dashboard-content > ul li.focused {
+  background-color: #1e8fff28;
+  font-weight: 500;
+  color: dodgerblue;
+}
+.dash-icon {
+  color: #2987e6d5;
+}
+.left-dashboard-content ul li {
   cursor: pointer;
+  border-radius: 2px;
   display: flex;
+  padding: 3px;
   flex-direction: row;
+  color: rgb(134, 131, 131);
 }
-.left-dashboard-content ul > li > P {
+.left-dashboard-content ul li > P {
   margin-left: 10px;
 }
 .right-content {
@@ -587,8 +602,9 @@ a:link {
 }
 .right-dashboard-content {
   flex: 5;
+  min-height: 450px;
 
-  padding-top: 60px;
+  /* padding-top: 60px; */
 }
 
 .left-content.quotesList ul {
@@ -937,4 +953,10 @@ a:link {
 }
 .html {
   scroll-behavior: smooth;
+}
+.dashboard-right-component {
+  background-color: #fff;
+  min-height: 450px;
+  border-radius: 10px;
+  padding-top: 10px;
 }

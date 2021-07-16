@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   firstName: { type: String, required: true }, // String is shorthand for {type: String}
   lastName: String,
   salutation: String,
-
+  sex: String,
   Email: { type: String, required: true, unique: true },
   Password: { type: String, required: true },
   mobilePhonbe: String,

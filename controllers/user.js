@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const UserSchema = require("../models/userMoodel");
 const insuranceentity = require("../models/insuranceEntity");
 const cars = require("../models/cars");
+const Policies = require("../models/policies");
 const { bikebrands, bikemodels } = require("../models/bike");
 const axios = require("axios");
 process.env.NODE_ENV !== "production" ? require("dotenv").config() : null;
@@ -29,8 +30,7 @@ exports.Login = async function (req, res) {
     if (err) throw err;
     if (!user) {
       res.status(404).json({
-        message:
-          " A user with this email is not registered with us, concider registering",
+        message: " A user with this account does not exist",
       });
     } else if (user) {
       const match = await user.verifyPassword(Password);
@@ -56,7 +56,7 @@ exports.Login = async function (req, res) {
 
 exports.Register = async (req, res) => {
   const { firstName, lastName, email, password, password2, Gender } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   const Email = email;
   const Password = password;
   const Password2 = password2;
@@ -71,13 +71,13 @@ exports.Register = async (req, res) => {
   console.log(firstName, lastName, email, Password, Password2, Gender);
   if (!Password2 || !Password || !lastName || !firstName || !Email) {
     return res.status(501).json({
-      message: "oops! you didnt fill all values required,kindly try again",
+      message: "You didnt fill all values required,kindly try again",
     });
   }
   await UserSchema.findOne({ Email: Email }).then((user) => {
     if (user) {
       return res.status(501).send({
-        message: `a user with email ${Email}is already registred, try to login`,
+        message: `a user with email ${Email}is already registred, proceed to login`,
       });
     }
   });
@@ -300,10 +300,13 @@ exports.PurchaseInsurance = async (req, res) => {
         },
       }
     )
-    .then((response) => {
+    .then(async (response) => {
       // console.log(response.data);
       if (response.data.data.status === "success") {
         //means the guy paid truly// then we process the guys purchase item
+        const NewPolicy = new Policies({ ...req.body });
+        await NewPolicy.save();
+
         return res.status(200).json({
           status: "success",
           message: "Your Purchase was successfull",
