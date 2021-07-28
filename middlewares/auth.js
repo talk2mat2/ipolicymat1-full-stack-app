@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const UserSchema = require("../models/userMoodel");
+// const UserSchema = require("../models/userMoodel");
 
 exports.LoginbyJWT = async function (req, res, next) {
   const token = req.headers.authorization;
@@ -12,7 +12,6 @@ exports.LoginbyJWT = async function (req, res, next) {
     } else {
       req.body.id = decodedToken.user._id;
       const todaysdate = new Date();
-
 
       next();
     }

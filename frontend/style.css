@@ -545,7 +545,8 @@ a:link {
 .dashboard-section {
   min-height: 100vh;
   width: 100%;
-  background-color: #fbfbfd;
+  /* background-color: #fbfbfd; */
+  background-color: #f4f5f7;
 }
 .dashboard-section main {
   padding: 10px;
@@ -603,6 +604,9 @@ a:link {
 .right-dashboard-content {
   flex: 5;
   min-height: 450px;
+  overflow-y: scroll;
+  max-height: 80vh;
+  padding-bottom: 20px;
 
   /* padding-top: 60px; */
 }
@@ -958,8 +962,18 @@ a:link {
   scroll-behavior: smooth;
 }
 .dashboard-right-component {
-  background-color: #fff;
+  background-color: #fbfbfd;
   min-height: 450px;
   border-radius: 10px;
   padding-top: 10px;
+}
+.card-with-shadow {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.sub-header {
+  color: grey;
+}
+.user-profile-input {
+  margin-bottom: 20px;
 }

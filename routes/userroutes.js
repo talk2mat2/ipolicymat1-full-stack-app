@@ -26,6 +26,7 @@ const {
   ListAllBikes,
   FindBikeModels,
   FindBikeModelsBySearch,
+  ListMypolicy,
 } = require("../controllers/user");
 
 var storage = multer.diskStorage({
@@ -74,5 +75,6 @@ Router.get("/fetchinsuranceEntity", fetchinsuranceEntity);
 Router.get("/FindCarModelsBySearch", FindCarModelsBySearch);
 Router.get("/FindBikeModelsBySearch", FindBikeModelsBySearch);
 Router.post("/PurchaseInsurance", PurchaseInsurance);
+Router.get("/ListMypolicy", LoginbyJWT, ListMypolicy);
 
 module.exports = Router;

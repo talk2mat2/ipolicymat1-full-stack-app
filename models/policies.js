@@ -13,9 +13,16 @@ const Policies = new Schema({
   product_type: String,
   members_nos: String,
   Purchase_for: String,
+  dob_day: String,
+  dob_month: String,
+  dob_year: String,
+  Provide_No_Claim: String,
   email: String,
   productCatalogue: String,
   quoteReferrence: String,
+  coverType: { Type: String },
+  otherData: Object,
+  quoteReference: String,
 });
 
 module.exports = mongoose.model("Policies", Policies);

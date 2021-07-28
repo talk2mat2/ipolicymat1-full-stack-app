@@ -55,7 +55,15 @@ exports.Login = async function (req, res) {
 };
 
 exports.Register = async (req, res) => {
-  const { firstName, lastName, email, password, password2, Gender } = req.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    password2,
+    Gender,
+    mobileNumber,
+  } = req.body;
   // console.log(req.body);
   const Email = email;
   const Password = password;
@@ -87,6 +95,7 @@ exports.Register = async (req, res) => {
     const Passwordhash = bcrypt.hashSync(Password, 10);
     const newUser = new UserSchema({
       firstName,
+      mobileNumber,
       lastName,
       Email,
       Password: Passwordhash,
@@ -289,6 +298,7 @@ exports.fetchinsuranceEntity = async (req, res) => {
 exports.PurchaseInsurance = async (req, res) => {
   console.log(req.body);
   const { paymentDetails } = req.body;
+
   //verify payment from paystack before we give the purchase value to the client
 
   await axios
@@ -304,6 +314,7 @@ exports.PurchaseInsurance = async (req, res) => {
       // console.log(response.data);
       if (response.data.data.status === "success") {
         //means the guy paid truly// then we process the guys purchase item
+        // console.log(req.body);
         const NewPolicy = new Policies({ ...req.body });
         await NewPolicy.save();
 
@@ -326,6 +337,49 @@ exports.PurchaseInsurance = async (req, res) => {
       return res.status(501).json({
         status: "fail",
         message: "An error occured",
+      });
+    });
+};
+
+//find policies for user by email
+
+exports.ListMypolicy = async (req, res) => {
+  //req.body.id= current usser
+  const limit = 10;
+  const { id } = req.body;
+  if (!id) {
+    return res.status(404).json({
+      status: "fail",
+      message: "not sign in or provided jwt",
+    });
+  }
+  await UserSchema.findOne({ _id: id })
+    .then(async (user) => {
+      // console.log(user);
+      const Query = { email: user.Email };
+      let total = await Policies.estimatedDocumentCount(Query);
+      await Policies.find(Query)
+        .limit(limit)
+        .then((policies) => {
+          // console.log(policies);
+          return res.status(200).json({
+            status: "success",
+            userData: policies,
+            total: total,
+            limit: limit,
+          });
+        })
+        .catch((err) => {
+          return res.status(404).json({
+            status: "fail",
+            message: "empty",
+          });
+        });
+    })
+    .catch((err) => {
+      return res.status(404).json({
+        status: "fail",
+        message: "empty",
       });
     });
 };
