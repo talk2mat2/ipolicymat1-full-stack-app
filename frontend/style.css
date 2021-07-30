@@ -172,6 +172,14 @@ a:link {
   font-size: 46px;
 }
 @media (max-width: 640px) {
+  .container-fluid {
+    padding: 0px !important;
+    margin: 0px !important;
+    /* width: 100% !important; */
+  }
+  .left-dashboard-content ul li {
+    margin-top: 20px;
+  }
   .login-right-section {
     display: none;
   }
@@ -605,12 +613,17 @@ a:link {
   flex: 5;
   min-height: 450px;
   overflow-y: scroll;
+  margin: 0;
   max-height: 80vh;
   padding-bottom: 20px;
+  position: relative;
 
   /* padding-top: 60px; */
 }
-
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
 .left-content.quotesList ul {
   margin-top: 10px;
 }
@@ -909,6 +922,16 @@ a:link {
   justify-content: center;
   z-index: 3;
   background-color: rgb(255, 255, 255, 0.8);
+}
+.loaderOverLay2 {
+  height: 100vh;
+  width: 90%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background-color: rgb(255, 255, 255, 0.6);
 }
 .login-page {
   background-color: #fbfbfd;

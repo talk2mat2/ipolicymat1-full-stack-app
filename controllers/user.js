@@ -426,3 +426,23 @@ exports.updateProfile = async (req, res) => {
     await this.SyncronizeUserData(req, res);
   });
 };
+
+exports.countUsersAndPolicies = async (req, res) => {
+  const totalPolicies = await Policies.estimatedDocumentCount({});
+  const TotalUsers = await UserSchema.estimatedDocumentCount({});
+  const totalInsuranceEntitites = await insuranceentity.estimatedDocumentCount(
+    {}
+  );
+
+  try {
+    return res.status(200).json({
+      status: "success",
+      userData: { totalPolicies, TotalUsers, totalInsuranceEntitites },
+    });
+  } catch (err) {
+    return res.status(200).json({
+      status: "fail",
+      message: "an error occured",
+    });
+  }
+};
