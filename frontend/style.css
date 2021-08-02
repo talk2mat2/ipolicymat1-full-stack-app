@@ -87,10 +87,51 @@ a:link {
 .nav-bar {
   display: flex;
   flex-direction: row;
+  position: relative;
   width: 100%;
   min-height: 60px;
   padding: 10px 10% !important;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.products-overlay {
+  position: absolute;
+  padding-left: 10vw;
+  padding-top: 60px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: ; */
+  width: 100%;
+  flex-wrap: wrap;
+  top: 40px;
+  left: 0;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.products-overlay ul {
+  display: flex;
+  margin-left: 50px !important;
+  flex-direction: column !important;
+  margin-bottom: 40px !important;
+}
+.products-overlay ul > li:nth-child(-n + 1),
+.products-overlay ul > a:nth-child(-n + 1) {
+  color: dodgerblue;
+  margin-bottom: 10px;
+}
+.products-overlay ul > a {
+  color: rgb(160, 155, 155);
+}
+.products-overlay ul > a,
+.products-overlay ul > a:active {
+  text-decoration: none !important;
+  text-transform: none !important;
+}
+.products-overlay ul > li,
+.products-overlay ul > a {
+  line-height: 2;
+
+  color: rgb(160, 155, 155);
 }
 .erroAlert:first-letter {
   text-transform: capitalize;
@@ -933,6 +974,18 @@ a:link {
   z-index: 3;
   background-color: rgb(255, 255, 255, 0.6);
 }
+.loaderOverLay3 {
+  height: 99%;
+
+  width: 50%;
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  background-color: rgb(255, 255, 255, 0.6);
+}
 .login-page {
   background-color: #fbfbfd;
   min-height: 100vh;
@@ -999,4 +1052,51 @@ a:link {
 }
 .user-profile-input {
   margin-bottom: 20px;
+}
+.wrapper {
+  filter: grayscale(1);
+}
+.wrapper:hover {
+  filter: none;
+}
+.wrapper:hover {
+  filter: none;
+}
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+  text-align: left;
+  font-weight: bolder;
+}
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  white-space: nowrap;
+}
+.styled-table tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+/* .styled-table thead tr:first-of-type {
+  border-top: 2px solid dodgerblue;
+} */
+.editInsurer input {
+  margin-bottom: 20px;
+  color: rgb(185, 216, 247);
+}
+.editInsurer label {
+  margin-bottom: 5px;
 }
