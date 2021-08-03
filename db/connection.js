@@ -14,4 +14,8 @@ const connectDB = async () => {
   );
 };
 
+// const conn = mongoose.connection;
+// gfs = Grid(conn.db, mongoose.mongo);
+// gfs.collection("photos");
+// exports.gfs = gfs;
 module.exports = connectDB;

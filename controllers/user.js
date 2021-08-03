@@ -6,7 +6,19 @@ const cars = require("../models/cars");
 const Policies = require("../models/policies");
 const { bikebrands, bikemodels } = require("../models/bike");
 const axios = require("axios");
+const path = require("path");
 process.env.NODE_ENV !== "production" ? require("dotenv").config() : null;
+const fs = require("fs");
+// var child_process = require("child_process");
+const Grid = require("gridfs-stream");
+const mongoose = require("mongoose");
+
+let gfs;
+const conn = mongoose.connection;
+conn.once("open", function () {
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection("photos");
+});
 
 function validateEmail(email) {
   const re =
@@ -444,5 +456,105 @@ exports.countUsersAndPolicies = async (req, res) => {
       status: "fail",
       message: "an error occured",
     });
+  }
+};
+
+exports.addInsurer = async (req, res) => {
+  console.log(req.file);
+  const { formResponse } = req.body;
+
+  const {
+    name,
+    tradeName,
+    classification,
+    registrationYear,
+    yearEstablished,
+    website,
+    telephone,
+    creditRating,
+    developerPoral,
+    carQuotePrice,
+    bikeQuotePrice,
+    thricycleQuotePrice,
+    HomeQuotePrice,
+    lifeQuotePrice,
+    travelQuotePrice,
+    phoneQuotePrice,
+    pcQuotePrice,
+    laptopQuotePrice,
+    CameratopQuotePrice,
+    ipodQuotePrice,
+    tabletQuotePrice,
+    healthQuotePrice,
+    registrationNumber,
+  } = JSON.parse(formResponse);
+
+  const params = {
+    name,
+    tradeName,
+    classification,
+    registrationYear,
+
+    yearEstablished,
+    website,
+    telephone,
+    creditRating,
+    developerPoral,
+    carQuotePrice,
+    bikeQuotePrice,
+    thricycleQuotePrice,
+    HomeQuotePrice,
+    lifeQuotePrice,
+    travelQuotePrice,
+    phoneQuotePrice,
+    pcQuotePrice,
+    laptopQuotePrice,
+    CameratopQuotePrice,
+    ipodQuotePrice,
+    tabletQuotePrice,
+    healthQuotePrice,
+    registrationNumber,
+  };
+  if (!name) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Insurer name is required",
+    });
+  }
+
+  Object.keys(params).map((xxx) =>
+    params[xxx] === null || typeof params[xxx] === "undefined"
+      ? delete params[xxx]
+      : null
+  );
+  console.log(req.headers.host);
+  // const url = req.protocol + "://" + req.get("host") + req.originalUrl;
+  const url =
+    req.protocol +
+    "://" +
+    req.get("host") +
+    "/api/v1/upload/" +
+    req.file.filename;
+  console.log(url);
+  const NewInsurer = new insuranceentity({
+    ...params,
+    logoImg: url,
+  });
+
+  await NewInsurer.save();
+  return res.status(202).json({
+    status: "success",
+    message: "Information Saved Successfully",
+  });
+};
+
+exports.MediaImage = async (req, res) => {
+  try {
+    const file = await gfs.files.findOne({ filename: req.params.filename });
+
+    const readStream = gfs.createReadStream(file.filename);
+    readStream.pipe(res);
+  } catch (error) {
+    res.send("not found");
   }
 };

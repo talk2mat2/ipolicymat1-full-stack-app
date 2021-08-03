@@ -11,7 +11,7 @@ exports.LoginbyJWT = async function (req, res, next) {
         .send({ message: "auth failed, login to continue" });
     } else {
       req.body.id = decodedToken.user._id;
-      const todaysdate = new Date();
+      // const todaysdate = new Date();
 
       next();
     }

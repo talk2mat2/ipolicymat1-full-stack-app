@@ -5,6 +5,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const Router = express.Router();
+const uploadImage = require("../middlewares/grfsUpload");
 
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
@@ -29,6 +30,8 @@ const {
   ListMypolicy,
   updateProfile,
   countUsersAndPolicies,
+  addInsurer,
+  MediaImage,
 } = require("../controllers/user");
 
 var storage = multer.diskStorage({
@@ -80,5 +83,7 @@ Router.post("/PurchaseInsurance", PurchaseInsurance);
 Router.get("/ListMypolicy", LoginbyJWT, ListMypolicy);
 Router.post("/updateProfile", LoginbyJWT, updateProfile);
 Router.get("/countUsersAndPolicies", LoginbyJWT, countUsersAndPolicies);
+Router.get("/upload/:filename", MediaImage);
+Router.post("/addInsurer", LoginbyJWT, uploadImage, LoginbyJWT, addInsurer);
 
 module.exports = Router;
