@@ -287,10 +287,27 @@ exports.FindCarModelsBySearch = async (req, res) => {
 
 exports.fetchinsuranceEntity = async (req, res) => {
   let total = await insuranceentity.estimatedDocumentCount({});
-
+  const { category } = req.query;
+  console.log(category);
+  const query =
+    category === "car"
+      ? { carQuotePrice: { $exists: true, $ne: "" } }
+      : category === "bike"
+      ? { bikeQuotePrice: { $exists: true, $ne: "" } }
+      : category === "thricycle"
+      ? { thricycleQuotePrice: { $exists: true, $ne: "" } }
+      : category === "home"
+      ? { HomeQuotePrice: { $exists: true, $ne: "" } }
+      : category === "life"
+      ? { lifeQuotePrice: { $exists: true, $ne: "" } }
+      : category === "travel"
+      ? { travelQuotePrice: { $exists: true, $ne: "" } }
+      : category === "health"
+      ? { healthQuotePrice: { $exists: true, $ne: "" } }
+      : {};
   const limit = 15;
   await insuranceentity
-    .find({})
+    .find(query)
     .limit(limit)
     .then((result) => {
       return res.status(200).json({
@@ -547,7 +564,34 @@ exports.addInsurer = async (req, res) => {
     message: "Information Saved Successfully",
   });
 };
+exports.DeleteInsuranceEntity = async (req, res) => {
+  const { insureId } = req.body;
+  console.log(insureId);
+  if (!insureId) {
+    return res.status(501).send({
+      status: "fail",
+      message: "pls provide a valid password and email",
+    });
+  }
 
+  await insuranceentity
+    .findByIdAndDelete(insureId)
+    .then((xxx) => {
+      return res.status(200).send({
+        status: "success",
+        message: "the requested operation was successful",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(501).send({
+        status: "fail",
+        message: "There was an error perfoming the requested operation",
+      });
+    });
+};
+
+//serve media image from mongodb grfs database
 exports.MediaImage = async (req, res) => {
   try {
     const file = await gfs.files.findOne({ filename: req.params.filename });

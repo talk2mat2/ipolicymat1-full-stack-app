@@ -31,6 +31,7 @@ const {
   updateProfile,
   countUsersAndPolicies,
   addInsurer,
+  DeleteInsuranceEntity,
   MediaImage,
 } = require("../controllers/user");
 
@@ -85,5 +86,6 @@ Router.post("/updateProfile", LoginbyJWT, updateProfile);
 Router.get("/countUsersAndPolicies", LoginbyJWT, countUsersAndPolicies);
 Router.get("/upload/:filename", MediaImage);
 Router.post("/addInsurer", LoginbyJWT, uploadImage, LoginbyJWT, addInsurer);
+Router.post("/DeleteInsuranceEntity", LoginbyJWT, DeleteInsuranceEntity);
 
 module.exports = Router;
