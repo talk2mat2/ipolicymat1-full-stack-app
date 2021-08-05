@@ -21,6 +21,7 @@ const insuranceentities = new Schema({
   travelQuotePrice: { type: String },
   phoneQuotePrice: { type: String },
   pcQuotePrice: { type: String },
+  gadgetQuotePrice: { type: String },
   laptopQuotePrice: { type: String },
   CameratopQuotePrice: { type: String },
   ipodQuotePrice: { type: String },

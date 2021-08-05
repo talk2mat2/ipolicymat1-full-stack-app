@@ -288,7 +288,7 @@ exports.FindCarModelsBySearch = async (req, res) => {
 exports.fetchinsuranceEntity = async (req, res) => {
   let total = await insuranceentity.estimatedDocumentCount({});
   const { category } = req.query;
-  console.log(category);
+  // console.log(category);
   const query =
     category === "car"
       ? { carQuotePrice: { $exists: true, $ne: "" } }
@@ -304,7 +304,9 @@ exports.fetchinsuranceEntity = async (req, res) => {
       ? { travelQuotePrice: { $exists: true, $ne: "" } }
       : category === "health"
       ? { healthQuotePrice: { $exists: true, $ne: "" } }
-      : {};
+      : category === "gadget"
+      ? { gadgetQuotePrice: { $exists: true, $ne: "" } }
+      : { name: 123 };
   const limit = 15;
   await insuranceentity
     .find(query)
@@ -500,6 +502,7 @@ exports.addInsurer = async (req, res) => {
     pcQuotePrice,
     laptopQuotePrice,
     CameratopQuotePrice,
+    gadgetQuotePrice,
     ipodQuotePrice,
     tabletQuotePrice,
     healthQuotePrice,
@@ -511,7 +514,7 @@ exports.addInsurer = async (req, res) => {
     tradeName,
     classification,
     registrationYear,
-
+    gadgetQuotePrice,
     yearEstablished,
     website,
     telephone,
