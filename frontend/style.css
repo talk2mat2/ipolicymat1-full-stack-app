@@ -93,18 +93,27 @@ a:link {
   padding: 10px 10% !important;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
-.products-overlay {
+.product-overlay-main{
   position: absolute;
-  padding-left: 10vw;
-  padding-top: 60px;
+
+  padding-top: 20px;
   min-height: 400px;
+  top: 40px;
+  left: 0; width: 100%;
+}
+.curved-Top{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.products-overlay {
+  padding-left: 10vw;
+  padding-top: 30px;
   display: flex;
   flex-direction: row;
   /* justify-content: ; */
   width: 100%;
   flex-wrap: wrap;
-  top: 40px;
-  left: 0;
+
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
@@ -198,6 +207,10 @@ a:link {
   text-transform: none;
   text-decoration: none;
   color: #000;
+}
+.overlayFocused{
+  border-bottom-color: #fff;
+  font-weight: 500;
 }
 .verticalCenterRow {
   display: flex;
@@ -1095,7 +1108,7 @@ a:link {
 } */
 .editInsurer input {
   margin-bottom: 20px;
-  color: rgb(185, 216, 247);
+  /* color: rgb(185, 216, 247); */
 }
 .editInsurer label {
   margin-bottom: 5px;
