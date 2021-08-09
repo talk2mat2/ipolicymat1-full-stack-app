@@ -3,6 +3,12 @@
 button:focus {
   outline: none;
 }
+select>option{
+  text-transform: capitalize;
+}
+
+
+
 input:focus,
 select:focus {
   outline: none;
@@ -41,10 +47,12 @@ a:link {
   padding: 10px 15px;
   border: none;
   border-radius: 3px;
+  text-transform: capitalize;
 }
 .btn2 {
   background-color: #fff;
   /* color: #fff; */
+  text-transform: capitalize;
   padding: 4px 17px;
   border: 1px solid #eee;
   border-radius: 3px;
@@ -53,6 +61,7 @@ a:link {
   background-color: #007bff;
   color: #fff;
   padding: 4px 50px;
+  text-transform: capitalize;
   /* width: 200px; */
   border: 1px solid #eee;
   border-radius: 3px;
@@ -60,6 +69,7 @@ a:link {
 }
 .btn6 {
   font-weight: 400;
+  text-transform: capitalize;
   padding: 2px 9px;
   /* width: 200px; */
   border: 1px solid #eee;
@@ -71,11 +81,13 @@ a:link {
   /* color: #fff; */
   padding: 4px 17px;
   border: none;
+  text-transform: capitalize;
   border-radius: 3px;
   font-weight: 200;
 }
 .btn5 {
   background-color: #fff;
+  text-transform: capitalize;
   /* color: #fff; */
   padding: 4px 30px;
   width: 100%;

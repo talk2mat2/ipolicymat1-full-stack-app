@@ -306,7 +306,9 @@ exports.fetchinsuranceEntity = async (req, res) => {
       ? { healthQuotePrice: { $exists: true, $ne: "" } }
       : category === "gadget"
       ? { gadgetQuotePrice: { $exists: true, $ne: "" } }
-      : { };
+      : category === "all"
+      ? { }
+      : { _id:34};
   const limit = 15;
   await insuranceentity
     .find(query)
