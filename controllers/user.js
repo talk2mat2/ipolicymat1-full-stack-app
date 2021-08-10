@@ -607,3 +607,32 @@ exports.MediaImage = async (req, res) => {
     res.send("not found");
   }
 };
+
+exports.ListAllpolicy = async (req, res) => {
+  //req.body.id= current usser
+  var pageNo = req.query.pageNo || 0;
+
+  const limit = 10;
+  var skip = pageNo * limit 
+      // console.log(user);
+      const Query = {  };
+      let total = await Policies.estimatedDocumentCount(Query);
+      await Policies.find(Query).skip(skip)
+        .limit(limit)
+        .then((policies) => {
+          // console.log(policies);
+          return res.status(200).json({
+            status: "success",
+            userData: policies,
+            total: total,
+            limit: limit,
+          });
+        })
+        .catch((err) => {
+          return res.status(404).json({
+            status: "fail",
+            message: "empty",
+          });
+        });
+  
+};
