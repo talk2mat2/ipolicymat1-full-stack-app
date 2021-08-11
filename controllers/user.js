@@ -7,7 +7,7 @@ const Policies = require("../models/policies");
 const { bikebrands, bikemodels } = require("../models/bike");
 const axios = require("axios");
 const path = require("path");
-process.env.NODE_ENV !== "production" ? require("dotenv").config() : null;
+require("dotenv").config('../.env');
 const fs = require("fs");
 // var child_process = require("child_process");
 const Grid = require("gridfs-stream");
@@ -551,10 +551,14 @@ exports.addInsurer = async (req, res) => {
   );
   console.log(req.headers.host);
   // const url = req.protocol + "://" + req.get("host") + req.originalUrl;
+  // const url =
+  //   req.protocol +
+  //   "://" +
+  //   req.get("host") +
+  //   "/api/v1/upload/" +
+  //   req.file.filename;
   const url =
-    req.protocol +
-    "://" +
-    req.get("host") +
+   process.env.WEB_URL +
     "/api/v1/upload/" +
     req.file.filename;
   console.log(url);
