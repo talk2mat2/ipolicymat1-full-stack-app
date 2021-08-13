@@ -2,12 +2,13 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const UserSchema = require("../models/userMoodel");
 const insuranceentity = require("../models/insuranceEntity");
+const Claims = require("../models/Claims");
 const cars = require("../models/cars");
 const Policies = require("../models/policies");
 const { bikebrands, bikemodels } = require("../models/bike");
 const axios = require("axios");
 const path = require("path");
-process.env.NODE_ENV !== "production" ? require("dotenv").config() : null;
+require("dotenv").config('../.env');
 const fs = require("fs");
 // var child_process = require("child_process");
 const Grid = require("gridfs-stream");
@@ -306,7 +307,9 @@ exports.fetchinsuranceEntity = async (req, res) => {
       ? { healthQuotePrice: { $exists: true, $ne: "" } }
       : category === "gadget"
       ? { gadgetQuotePrice: { $exists: true, $ne: "" } }
-      : { name: 123 };
+      : category === "all"
+      ? { }
+      : { _id:34};
   const limit = 15;
   await insuranceentity
     .find(query)
@@ -549,10 +552,14 @@ exports.addInsurer = async (req, res) => {
   );
   console.log(req.headers.host);
   // const url = req.protocol + "://" + req.get("host") + req.originalUrl;
+  // const url =
+  //   req.protocol +
+  //   "://" +
+  //   req.get("host") +
+  //   "/api/v1/upload/" +
+  //   req.file.filename;
   const url =
-    req.protocol +
-    "://" +
-    req.get("host") +
+   process.env.WEB_URL +
     "/api/v1/upload/" +
     req.file.filename;
   console.log(url);
@@ -605,3 +612,88 @@ exports.MediaImage = async (req, res) => {
     res.send("not found");
   }
 };
+
+exports.ListAllpolicy = async (req, res) => {
+  //req.body.id= current usser
+  var pageNo = req.query.pageNo || 0;
+
+  const limit = 10;
+  var skip = pageNo * limit 
+      // console.log(user);
+      const Query = {  };
+      let total = await Policies.estimatedDocumentCount(Query);
+      await Policies.find(Query).skip(skip)
+        .limit(limit)
+        .then((policies) => {
+          // console.log(policies);
+          return res.status(200).json({
+            status: "success",
+            userData: policies,
+            total: total,
+            limit: limit,
+          });
+        })
+        .catch((err) => {
+          return res.status(404).json({
+            status: "fail",
+            message: "empty",
+          });
+        });
+};
+exports.ListAllClaims = async (req, res) => {
+  //req.body.id= current usser
+  var pageNo = req.query.pageNo || 0;
+
+  const limit = 10;
+  var skip = pageNo * limit 
+      // console.log(user);
+      const Query = {  };
+      let total = await Claims.estimatedDocumentCount(Query);
+      await Claims.find(Query).skip(skip)
+        .limit(limit)
+        .then((claims) => {
+          // console.log(policies);
+          return res.status(200).json({
+            status: "success",
+            userData: claims,
+            total: total,
+            limit: limit,
+          });
+        })
+        .catch((err) => {
+          return res.status(404).json({
+            status: "fail",
+            message: "empty",
+          });
+        });
+};
+
+exports.SubmitClaimRequest= async (req,res)=>{
+  console.log(req.body)
+const {firstName,mobileNumber,policyNumber} = req.body
+
+try{
+if (!firstName,!mobileNumber,!policyNumber) {
+  return res.status(501).send({
+    status: "fail",
+    message: " The required fields not provided",
+  });
+}
+
+else{
+  const newClaims = new Claims({...req.body});
+  await newClaims.save()
+  return res.status(200).json({
+    status: "success",
+    message:"Claim Request Successfully Made"
+  });
+}
+}
+catch(err){
+  console.log(err)
+  return res.status(501).send({
+    status: "fail",
+    message: "The Requested Operation was not successfull, kindly try again later",
+  });
+}
+}

@@ -2,10 +2,11 @@ const util = require("util");
 const multer = require("multer");
 const path = require("path");
 const { GridFsStorage } = require("multer-gridfs-storage");
-process.env.NODE_ENV !== "production" ? require("dotenv").config() : null;
+require("dotenv").config('../.env');
 //var url = "mongodb://localhost:27017/martins";
 const { v4: uuidv4 } = require("uuid");
-const url = `mongodb+srv://${process.env.MONGOUSER}:${process.env.MONGOPASS}@cluster0-gussd.mongodb.net/ipmat1?retryWrites=true&w=majority`;
+//const url = `mongodb+srv://${process.env.MONGOUSER}:${process.env.MONGOPASS}@cluster0-gussd.mongodb.net/ipmat1?retryWrites=true&w=majority`;
+const url = process.env.DATABASE_URL
 
 var storage = new GridFsStorage({
   url: url,

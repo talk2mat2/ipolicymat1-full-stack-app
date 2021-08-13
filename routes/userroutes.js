@@ -33,6 +33,9 @@ const {
   addInsurer,
   DeleteInsuranceEntity,
   MediaImage,
+  ListAllpolicy,
+  SubmitClaimRequest,
+  ListAllClaims
 } = require("../controllers/user");
 
 var storage = multer.diskStorage({
@@ -85,6 +88,9 @@ Router.get("/ListMypolicy", LoginbyJWT, ListMypolicy);
 Router.post("/updateProfile", LoginbyJWT, updateProfile);
 Router.get("/countUsersAndPolicies", LoginbyJWT, countUsersAndPolicies);
 Router.get("/upload/:filename", MediaImage);
+Router.get("/ListAllpolicy", ListAllpolicy);
+Router.get("/ListAllClaims", ListAllClaims);
+Router.post("/SubmitClaimRequest", SubmitClaimRequest);
 Router.post("/addInsurer", LoginbyJWT, uploadImage, LoginbyJWT, addInsurer);
 Router.post("/DeleteInsuranceEntity", LoginbyJWT, DeleteInsuranceEntity);
 
