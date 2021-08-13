@@ -1125,3 +1125,29 @@ a:link {
 .editInsurer label {
   margin-bottom: 5px;
 }
+
+.detailUserPolicy{
+  list-style: none;
+  width: 100%;
+
+}
+.detailUserPolicy li{
+  display: flex;
+  justify-content: space-around;
+ text-transform: capitalize;
+  font-weight: 400;
+}
+.detailUserPolicy li>span{
+ padding: 12px 15px;
+ width: 50%;
+}
+
+
+
+.detailUserPolicy li:nth-child(odd){
+  
+  border-bottom: 1px solid #dddddd;
+  white-space: nowrap;
+  background-color: #fff;
+
+}

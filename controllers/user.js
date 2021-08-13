@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const UserSchema = require("../models/userMoodel");
 const insuranceentity = require("../models/insuranceEntity");
+const Claims = require("../models/Claims");
 const cars = require("../models/cars");
 const Policies = require("../models/policies");
 const { bikebrands, bikemodels } = require("../models/bike");
@@ -638,5 +639,61 @@ exports.ListAllpolicy = async (req, res) => {
             message: "empty",
           });
         });
-  
 };
+exports.ListAllClaims = async (req, res) => {
+  //req.body.id= current usser
+  var pageNo = req.query.pageNo || 0;
+
+  const limit = 10;
+  var skip = pageNo * limit 
+      // console.log(user);
+      const Query = {  };
+      let total = await Claims.estimatedDocumentCount(Query);
+      await Claims.find(Query).skip(skip)
+        .limit(limit)
+        .then((claims) => {
+          // console.log(policies);
+          return res.status(200).json({
+            status: "success",
+            userData: claims,
+            total: total,
+            limit: limit,
+          });
+        })
+        .catch((err) => {
+          return res.status(404).json({
+            status: "fail",
+            message: "empty",
+          });
+        });
+};
+
+exports.SubmitClaimRequest= async (req,res)=>{
+  console.log(req.body)
+const {firstName,mobileNumber,policyNumber} = req.body
+
+try{
+if (!firstName,!mobileNumber,!policyNumber) {
+  return res.status(501).send({
+    status: "fail",
+    message: " The required fields not provided",
+  });
+}
+
+else{
+  const newClaims = new Claims({...req.body});
+  await newClaims.save()
+  return res.status(200).json({
+    status: "success",
+    message:"Claim Request Successfully Made"
+  });
+}
+}
+catch(err){
+  console.log(err)
+  return res.status(501).send({
+    status: "fail",
+    message: "The Requested Operation was not successfull, kindly try again later",
+  });
+}
+}
