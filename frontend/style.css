@@ -504,6 +504,9 @@ a:link {
 .footer-items ul > li {
   margin-bottom: 20px;
 }
+.footer-items ul a{
+color: inherit;
+}
 .footer-items ul:nth-child(n + 3) {
   margin-left: 30px;
 }
