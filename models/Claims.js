@@ -14,6 +14,7 @@ const Claims= new Schema({
     email:String,
     previousClaims:String,
     Provide_No_Claim:String,
+    productCatalogue:String,
 })
 
 
