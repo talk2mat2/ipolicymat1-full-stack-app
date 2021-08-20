@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const UserSchema = require("../models/userMoodel");
 const insuranceentity = require("../models/insuranceEntity");
+const HomepageModels = require("../models/homepageModel");
 const Claims = require("../models/Claims");
 const cars = require("../models/cars");
 const Policies = require("../models/policies");
@@ -673,7 +674,7 @@ exports.SubmitClaimRequest= async (req,res)=>{
 const {firstName,mobileNumber,policyNumber} = req.body
 
 try{
-if (!firstName,!mobileNumber,!policyNumber) {
+if (!firstName || !mobileNumber || !policyNumber) {
   return res.status(501).send({
     status: "fail",
     message: " The required fields not provided",
@@ -696,4 +697,51 @@ catch(err){
     message: "The Requested Operation was not successfull, kindly try again later",
   });
 }
+}
+
+exports.UpdateHomepageModels=async (req,res)=>{
+  const {videoUrl}=req.body;
+ //set to false to allow update with empty string to delete existing records
+  if(false){
+    return res.status(501).send({
+      status: "fail",
+      message: "required parameters not provided",
+    });
+  }
+  else{
+    const exist=await HomepageModels.findOne({videoUrl:{ $exists: true }})
+    if(exist){
+      exist.videoUrl=videoUrl;
+      await exist.save()
+      return res.status(200).json({
+        status: "success",
+        message:"updated successfully"
+      });
+    }
+    else{
+      const updateHomepageModels =new HomepageModels({videoUrl:videoUrl})
+      await updateHomepageModels.save()
+      return res.status(200).json({
+        status: "success",
+        message:"updated successfully"
+      });
+    }
+   
+
+  }
+ 
+}
+exports.fetchHomepageModels=async (req,res)=>{
+  await HomepageModels.findOne({videoUrl:{ $exists: true, $ne: "" }}).then(response=>{
+    return res.status(200).json({
+      status: "success",
+      message:"updated successfully",
+      userData:response
+    });
+  }).catch(error=>{
+    return res.status(501).send({
+      status: "fail",
+      message: "not found",
+    });
+  })
 }

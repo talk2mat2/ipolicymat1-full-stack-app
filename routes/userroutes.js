@@ -35,7 +35,9 @@ const {
   MediaImage,
   ListAllpolicy,
   SubmitClaimRequest,
-  ListAllClaims
+  ListAllClaims,
+  fetchHomepageModels,
+  UpdateHomepageModels
 } = require("../controllers/user");
 
 var storage = multer.diskStorage({
@@ -93,5 +95,7 @@ Router.get("/ListAllClaims", ListAllClaims);
 Router.post("/SubmitClaimRequest", SubmitClaimRequest);
 Router.post("/addInsurer", LoginbyJWT, uploadImage, LoginbyJWT, addInsurer);
 Router.post("/DeleteInsuranceEntity", LoginbyJWT, DeleteInsuranceEntity);
+Router.post("/UpdateHomepageModels", LoginbyJWT, UpdateHomepageModels);
+Router.get("/fetchHomepageModels", fetchHomepageModels);
 
 module.exports = Router;
